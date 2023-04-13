@@ -1,11 +1,17 @@
 import pandas as pd
 import numpy as np
+from scipy import stats
 
 
-chat_id = 123456 # Ваш chat ID, не меняйте название переменной
+chat_id = 324151080 # Ваш chat ID, не меняйте название переменной
 
-def solution(...) -> bool: # Одна или две выборке на входе, заполняется исходя из условия
+def solution(rvs1, rvs2) -> bool: # Одна или две выборке на входе, заполняется исходя из условия
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    return ... # Ваш ответ, True или False
+    t, pval = stats.ttest_ind(rvs1, rvs2, equal_var=False)
+    #return pval
+    if pval > 0.08:
+        return True
+    else:
+        return False
